@@ -1,0 +1,11 @@
+name = "subscribetracker-api"
+main = "functions/api.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+JWT_SECRET = "your-jwt-secret"
+
+[[routes]]
+pattern = "*/api/*"
+zone_name = "your-domain.com"
