@@ -1,5 +1,4 @@
 name = "subscribetracker"
-main = "functions/index.js"
 compatibility_date = "2024-01-01"
 
 [env.production]
@@ -16,10 +15,9 @@ binding = "SUBSCRIPTIONS_KV"
 id = "your-kv-namespace-id"
 preview_id = "your-preview-kv-namespace-id"
 
-[site]
-bucket = "./frontend/dist"
-entry-point = "functions"
+[build]
+command = "cd frontend && npm install && npm run build"
+publish = "frontend/dist"
 
-[[pages_build_output.functions]]
-routing = { pattern = "/api/*" }
-script = "functions/index.js"
+[build.environment_variables]
+NODE_VERSION = "18"
