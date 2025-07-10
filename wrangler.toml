@@ -1,0 +1,25 @@
+name = "subscribetracker"
+main = "functions/index.js"
+compatibility_date = "2024-01-01"
+
+[env.production]
+JWT_SECRET = "your-jwt-secret"
+DATABASE_URL = "your-database-url"
+GEMINI_API_KEY = "your-gemini-api-key"
+WECHAT_WEBHOOK_URL = "your-wechat-webhook-url"
+DINGTALK_WEBHOOK_URL = "your-dingtalk-webhook-url"
+TELEGRAM_BOT_TOKEN = "your-telegram-bot-token"
+WXPUSHER_APP_TOKEN = "your-wxpusher-app-token"
+
+[[kv_namespaces]]
+binding = "SUBSCRIPTIONS_KV"
+id = "your-kv-namespace-id"
+preview_id = "your-preview-kv-namespace-id"
+
+[site]
+bucket = "./frontend/dist"
+entry-point = "functions"
+
+[[pages_build_output.functions]]
+routing = { pattern = "/api/*" }
+script = "functions/index.js"

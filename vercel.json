@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/dist/$1"
+    }
+  ],
+  "functions": {
+    "backend/server.js": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "JWT_SECRET": "@jwt_secret",
+    "DATABASE_URL": "@database_url",
+    "GEMINI_API_KEY": "@gemini_api_key",
+    "WECHAT_WEBHOOK_URL": "@wechat_webhook_url",
+    "DINGTALK_WEBHOOK_URL": "@dingtalk_webhook_url",
+    "TELEGRAM_BOT_TOKEN": "@telegram_bot_token",
+    "WXPUSHER_APP_TOKEN": "@wxpusher_app_token"
+  }
+}
