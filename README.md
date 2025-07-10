@@ -33,10 +33,35 @@ vercel --prod
 ```
 
 ### Cloudflare Pages 部署
-点击上方按钮一键部署到 Cloudflare Pages，或手动执行：
+**方法一：自动部署（推荐）**
+1. Fork 本仓库
+2. 在 Cloudflare Dashboard 中连接 GitHub 仓库
+3. 设置构建配置：
+   - 构建命令：`npm run build:frontend`
+   - 构建输出目录：`frontend/dist`
+   - Node.js 版本：18
 
+**方法二：手动部署**
 ```bash
-# 使用 Wrangler CLI
+# 克隆仓库
+git clone https://github.com/RY-zzcn/SubScribeTracker.git
+cd SubScribeTracker
+
+# 运行部署脚本
+chmod +x deploy/cloudflare-deploy.sh
+./deploy/cloudflare-deploy.sh
+```
+
+**方法三：Wrangler CLI**
+```bash
+# 安装 Wrangler CLI
+npm install -g wrangler
+
+# 登录 Cloudflare
+wrangler login
+
+# 部署
+npm run build:frontend
 wrangler pages deploy frontend/dist --project-name=subscribetracker
 ```
 
