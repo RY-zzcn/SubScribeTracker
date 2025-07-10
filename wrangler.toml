@@ -1,6 +1,13 @@
 name = "subscribetracker"
 compatibility_date = "2024-01-01"
 
+[build]
+command = "cd frontend && npm install && npm run build"
+publish = "frontend/dist"
+
+[assets]
+directory = "./frontend/dist"
+
 [env.production]
 JWT_SECRET = "your-jwt-secret"
 DATABASE_URL = "your-database-url"
@@ -14,10 +21,6 @@ WXPUSHER_APP_TOKEN = "your-wxpusher-app-token"
 binding = "SUBSCRIPTIONS_KV"
 id = "your-kv-namespace-id"
 preview_id = "your-preview-kv-namespace-id"
-
-[build]
-command = "cd frontend && npm install && npm run build"
-publish = "frontend/dist"
 
 [build.environment_variables]
 NODE_VERSION = "18"
