@@ -42,6 +42,19 @@ export default function Login() {
               立即注册
             </Link>
           </p>
+          
+          {/* 演示账号提示 */}
+          <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <h3 className="text-sm font-medium text-blue-800 mb-2">演示账号</h3>
+            <div className="text-xs text-blue-700 space-y-1">
+              <div>
+                <strong>管理员：</strong> admin@subscribetracker.com / admin123
+              </div>
+              <div>
+                <strong>普通用户：</strong> demo@example.com / demo123
+              </div>
+            </div>
+          </div>
         </div>
         
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
